@@ -2,7 +2,7 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from datetime import datetime
 from sqlalchemy import create_engine, Table, Column, String, Float, Integer, MetaData
-from sqlalchemy.orm import sessionmaker, mapper
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import select
 
 class FinanceProvider:
@@ -115,7 +115,8 @@ def main():
         provider = FinanceProvider('USD000UTSTOM')
         raw_data = provider.get_data(str(last_data), str(current_data))
         bd.write_data(raw_data)
-    print('Вывод данных:\n<TICKER>,<PER>,<DATE>,<TIME>,<OPEN>,<HIGH>,<LOW>,<CLOSE>,<VOL>\n')
+    print('Вывод данных:\n<TICKER>,       <PER>, <DATE>,    <TIME>, <OPEN>, <HIGH>,  <LOW>,<CLOSE>, <VOL>\n')
     bd.to_print()
 
 main()
+input('Press ENTER to exit')
